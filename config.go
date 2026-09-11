@@ -11,7 +11,7 @@ type config struct {
 	mapn     string
 	mapb     string
 	cache    internal.Cache
-	caught   []string
+	caught   map[string]pokeData
 }
 
 func getConfig() config {
@@ -20,7 +20,7 @@ func getConfig() config {
 		mapn:     "https://pokeapi.co/api/v2/location-area?offset=0&limit=20",
 		mapb:     "",
 		cache:    internal.NewCache(2 * time.Minute),
-		caught:   []string{},
+		caught:   map[string]pokeData{},
 	}
 	return config
 }

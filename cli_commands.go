@@ -35,8 +35,18 @@ func getCommands() map[string]cliCommand {
 		},
 		"explore": {
 			name:        "explore",
-			description: "lists the pokemon found at the specified area, use like: explore <area_name>",
+			description: "lists the pokemon found at the specified area. use like: explore <area_name>",
 			callback:    commandExplore,
+		},
+		"catch": {
+			name:        "catch",
+			description: "attempt to catch the specified pokemon. use like: catch <pokemon_name>",
+			callback:    commandCatch,
+		},
+		"inspect": {
+			name:        "inspect",
+			description: "inspect specified pokemon. must have caught pokemon first. use like: inspect <pokemon_name>",
+			callback:    commandInspect,
 		},
 	}
 	return commands
