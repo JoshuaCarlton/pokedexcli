@@ -17,12 +17,16 @@ func main() {
 		}
 		input := scanner.Text()
 		firstWord := cleanInput(input)[0]
+		secondWord := ""
+		if len(cleanInput(input)) > 1 {
+			secondWord = cleanInput(input)[1]
+		}
 		commands := config.commands
 		command, ok := commands[firstWord]
 		if !ok {
 			fmt.Println("Unknown command")
 		} else {
-			err := command.callback(&config)
+			err := command.callback(&config, secondWord)
 			if err != nil {
 				fmt.Println(err.Error())
 			}

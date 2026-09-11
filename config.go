@@ -11,6 +11,7 @@ type config struct {
 	mapn     string
 	mapb     string
 	cache    internal.Cache
+	caught   []string
 }
 
 func getConfig() config {
@@ -18,7 +19,8 @@ func getConfig() config {
 		commands: getCommands(),
 		mapn:     "https://pokeapi.co/api/v2/location-area?offset=0&limit=20",
 		mapb:     "",
-		cache:    internal.NewCache(5 * time.Second),
+		cache:    internal.NewCache(2 * time.Minute),
+		caught:   []string{},
 	}
 	return config
 }

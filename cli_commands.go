@@ -8,7 +8,7 @@ import (
 type cliCommand struct {
 	name        string
 	description string
-	callback    func(*config) error
+	callback    func(*config, string) error
 }
 
 func getCommands() map[string]cliCommand {
@@ -33,17 +33,22 @@ func getCommands() map[string]cliCommand {
 			description: "displays the previous 20 location areas in the Pokemon world ",
 			callback:    commandMapb,
 		},
+		"explore": {
+			name:        "explore",
+			description: "lists the pokemon found at the specified area, use like: explore <area_name>",
+			callback:    commandExplore,
+		},
 	}
 	return commands
 }
 
-func commandExit(config *config) error {
+func commandExit(config *config, _ string) error {
 	fmt.Println("Closing the Pokedex... Goodbye!")
 	os.Exit(0)
 	return nil
 }
 
-func commandHelp(config *config) error {
+func commandHelp(config *config, _ string) error {
 	fmt.Print("Welcome to the Pokedex!\nUsage:\n\n")
 	commands := config.commands
 	for _, value := range commands {

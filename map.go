@@ -15,7 +15,7 @@ type location struct {
 	Name string `json:"name"`
 }
 
-func commandMapb(config *config) error {
+func commandMapb(config *config, _ string) error {
 	if config.mapb == "" {
 		fmt.Println("you are on the first page")
 		return nil
@@ -40,7 +40,7 @@ func commandMapb(config *config) error {
 	return nil
 }
 
-func commandMap(config *config) error {
+func commandMap(config *config, _ string) error {
 	if config.mapn == "" {
 		fmt.Println("you are on the last page")
 		return nil
